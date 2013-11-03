@@ -3,4 +3,6 @@ sudo service mysql restart
 root
 toor
 
+mysql --user=root --password=toor prodb <vizgrimoire_vizgrimoirer_cvsanaly.dump >output.tab
 
+git push origin master

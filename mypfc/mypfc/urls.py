@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
@@ -5,14 +6,11 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-	url(r'^$', 'mypfc.views.home', name='home'),
+	url(r'^$', 'finalapp.views.home', name='home'),
 
-	#TODO: poner 3 funciones
-	#1. /users ¿and projects? 2. /"user"/projects 3. /"user"/commits
-
-	url(r'^users', mypfc.views.users),
-	url(r'^projects/(.*)', mypfc.views.projects),
-	url(r'^commits/(.*)', mypfc.views.commits),
+	url(r'^users', 'finalapp.views.users', name='users'),
+	url(r'^projects/(.*)', 'finalapp.views.projects', name='projects'),
+	url(r'^commits/(.*)', 'finalapp.views.commits', name='commits'),
     # Examples:
     # url(r'^$', 'mypfc.views.home', name='home'),
     # url(r'^mypfc/', include('mypfc.foo.urls')),
