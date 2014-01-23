@@ -1,12 +1,27 @@
 from django.db import models
 
 # Create your models here.
+class Repositories(models.Model):
+	id = models.IntegerField(primary_key=True)
+	uri = models.TextField()
+	name = models.TextField()	
+	type_2 = models.TextField()
+
+class Files(models.Model):
+	id = models.IntegerField(primary_key=True)
+	repository_id = models.ForeignKey(Repositories)
+	file_name = models.TextField()
+
+class People(models.Model):
+	id = models.IntegerField(primary_key=True)
+	name = models.TextField()
+	mail = models.TextField()
 
 class Scmlog(models.Model):
 	id = models.IntegerField(primary_key=True)
-	repository_id = models.ForeignKey(Repository)
-	author_id = models.ForeignKey(Author)
-	commiter_id = models.ForeignKey(Commiter);
+	repository_id = models.ForeignKey(Repositories)
+	author_id = models.ForeignKey(People)
+	commiter_id = models.ForeignKey(People);
 	#rev = models.MediumText
 	date = models.DateTimeField()
 	message = models.TextField()
@@ -14,20 +29,26 @@ class Scmlog(models.Model):
 
 class File_types(models.Model):
 	id = models.IntegerField(primary_key=True)
-	file_id = models.ForeignKey(File)
+	file_id = models.ForeignKey(Files)
 	#type_id = models.MediumText
-
-class Actions(models.Model):
-	id = models.IntegerField(primary_key=True)
-	file_id = models.ForeignKey(File)
-	commit_id = models.ForeignKey(Commit)
-	branch_id = models.ForeignKey(Branches)
-	type = models.CharField(max_length=1)
 
 class Branches(models.Model):
 	id = models.IntegerField(primary_key=True)
-	name = models.ForeignKey(Branches)
-	
+	#name = models.ForeignKey(Branches)
+
+class Actions(models.Model):
+	id = models.IntegerField(primary_key=True)
+	file_id = models.ForeignKey(Files)
+	commit_id = models.ForeignKey(Scmlog)
+	branch_id = models.ForeignKey(Branches)
+	type = models.CharField(max_length=1)
+
+class Commits_lines(models.Model):
+	id = models.IntegerField(primary_key=True)
+	commit_id = models.ForeignKey(Scmlog)
+	added_name = models.IntegerField()
+	removed_name = models.IntegerField()
+
 class Metrics(models.Model):
 	id = models.IntegerField(primary_key=True)
 	file_id = models.ForeignKey(Files)
@@ -38,7 +59,6 @@ class Metrics(models.Model):
 	ncomment = models.IntegerField()
 	lcomment = models.IntegerField()
 	lblank = models.IntegerField()	
-	
 	mccabe_min = models.IntegerField()
 	nfunctions = models.IntegerField()
 	mccabe_max = models.IntegerField()
@@ -50,37 +70,30 @@ class Metrics(models.Model):
 	halstead_level = models.FloatField()
 	halstead_md = models.IntegerField()
 
-class People(models.Model):
-	id = models.IntegerField(primary_key=True)
-
-
-class Repositories(models.Model):
-	id = models.IntegerField(primary_key=True)
-
-
-class Commits_lines(models.Model):
-	id = models.IntegerField(primary_key=True)
-
-
 class File_copies(models.Model):
 	id = models.IntegerField(primary_key=True)
-
-
-class Files(models.Model):
-	id = models.IntegerField(primary_key=True)
-
+	from_id = models.ForeignKey(Files)
+	from_commit_id = models.ForeignKey(Scmlog)
+	to_id = models.ForeignKey(Files)
+	action_id = models.ForeignKey(Actions)
+	#new_file_name = models.MediumText
 
 class Files_links(models.Model):
 	id = models.IntegerField(primary_key=True)
-
-
-class Tag_revisions(models.Model):
-	id = models.IntegerField(primary_key=True)
+	file_id = models.ForeignKey(Files)
+	parent_id = models.ForeignKey(Files)
+	commit_id = models.ForeignKey(Scmlog)
 
 
 class Tags(models.Model):
 	id = models.IntegerField(primary_key=True)
+	name = models.TextField()
 
+class Tag_revisions(models.Model):
+	id = models.IntegerField(primary_key=True)
+	#datasource_id = models.ForeignKey(
+	commit_id = models.ForeignKey(Scmlog)
+	tag_id = models.ForeignKey(Tags)
 
 
 #TODO: adaptar estas tablas a las de VizGrimoire https://github.com/MetricsGrimoire/CVSAnalY/wiki/Database-Schema

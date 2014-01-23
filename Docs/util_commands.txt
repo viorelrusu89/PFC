@@ -5,7 +5,11 @@ toor
 
 mysql --user=root --password=toor prodb <vizgrimoire_vizgrimoirer_cvsanaly.dump >output.tab
 
+mysql --user=.... -> use database1 -> source vizgrimoire.dump
+
 git push origin master
 
 cd dir-practica/myproject
 python manage.py runserver 1234
+python manage.py validate
+
