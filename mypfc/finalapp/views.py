@@ -1,8 +1,10 @@
 # Create your views here.
 from django.http import HttpResponse
-
+from finalapp.models import Tags
 def home(request):
 	html = "<html><body>home</body></html>"
+	p = Tags(id=2, name="sori")
+	p.save()
 	return HttpResponse(html)
 
 def users(request):

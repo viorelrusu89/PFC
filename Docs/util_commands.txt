@@ -13,3 +13,4 @@ cd dir-practica/myproject
 python manage.py runserver 1234
 python manage.py validate
 
+http://localhost/phpmyadmin/index.php

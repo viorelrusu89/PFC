@@ -20,8 +20,8 @@ class People(models.Model):
 class Scmlog(models.Model):
 	id = models.IntegerField(primary_key=True)
 	repository_id = models.ForeignKey(Repositories)
-	author_id = models.ForeignKey(People)
-	commiter_id = models.ForeignKey(People);
+	author_id = models.ForeignKey(People, related_name='scmlog_author')
+	commiter_id = models.ForeignKey(People, related_name='scmlog_commiter');
 	#rev = models.MediumText
 	date = models.DateTimeField()
 	message = models.TextField()
@@ -34,7 +34,8 @@ class File_types(models.Model):
 
 class Branches(models.Model):
 	id = models.IntegerField(primary_key=True)
-	#name = models.ForeignKey(Branches)
+	#name = models.ForeignKey('self')
+	name = models.CharField(max_length=255)
 
 class Actions(models.Model):
 	id = models.IntegerField(primary_key=True)
@@ -72,22 +73,24 @@ class Metrics(models.Model):
 
 class File_copies(models.Model):
 	id = models.IntegerField(primary_key=True)
-	from_id = models.ForeignKey(Files)
+	from_id = models.ForeignKey(Files, related_name='file_copies_from')
 	from_commit_id = models.ForeignKey(Scmlog)
-	to_id = models.ForeignKey(Files)
+	to_id = models.ForeignKey(Files, related_name='files_copies_to')
 	action_id = models.ForeignKey(Actions)
 	#new_file_name = models.MediumText
 
 class Files_links(models.Model):
 	id = models.IntegerField(primary_key=True)
-	file_id = models.ForeignKey(Files)
-	parent_id = models.ForeignKey(Files)
+	file_id = models.ForeignKey(Files, related_name='files_links_id')
+	parent_id = models.ForeignKey(Files, related_name='files_links_parent')
 	commit_id = models.ForeignKey(Scmlog)
 
 
 class Tags(models.Model):
-	id = models.IntegerField(primary_key=True)
+	#id = models.IntegerField(primary_key=True)
 	name = models.TextField()
+	class Meta:
+		db_table = "tags"
 
 class Tag_revisions(models.Model):
 	id = models.IntegerField(primary_key=True)
