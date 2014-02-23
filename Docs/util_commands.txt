@@ -5,7 +5,7 @@ toor
 
 mysql --user=root --password=toor prodb <vizgrimoire_vizgrimoirer_cvsanaly.dump >output.tab
 
-mysql --user=.... -> use database1 -> source vizgrimoire.dump
+mysql --user=.... -> use database1 -> source vizgrimoire.dump #para crear las tablas en database1
 
 git push origin master
 
