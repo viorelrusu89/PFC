@@ -2,10 +2,10 @@
 from django.http import HttpResponse
 from finalapp.models import *
 def home(request):
-	p = People.objects.get(pk=2)
+	p = File_links.objects.get(pk=1)
 	html = "<html><body>home</body></html>"
 	
-	return HttpResponse(p.name)
+	return HttpResponse(p.file_path)
 
 def users(request):
 	html = "<html><body>users view goes here</body></html>"

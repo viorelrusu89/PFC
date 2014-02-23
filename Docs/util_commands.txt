@@ -9,6 +9,10 @@ mysql --user=.... -> use database1 -> source vizgrimoire.dump #para crear las ta
 
 git push origin master
 
+git add -A stages All;
+git add . stages new and modified, without deleted;
+git add -u stages modified and deleted, without new.
+
 cd dir-practica/myproject
 python manage.py runserver 1234
 python manage.py validate

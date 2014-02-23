@@ -3,23 +3,23 @@ from django.db import models
 # Create your models here.
 class Repositories(models.Model):
 	#id = models.IntegerField(primary_key=True)
-	uri = models.TextField()
-	name = models.TextField()	
-	type_2 = models.TextField()
+	uri = models.CharField(max_length=255)
+	name = models.CharField(max_length=255)
+	type = models.CharField(max_length=30)
 	class Meta:
 		db_table = "repositories"
 
 class Files(models.Model):
 	#id = models.IntegerField(primary_key=True)
 	repository = models.ForeignKey(Repositories)
-	file_name = models.TextField()
+	file_name = models.CharField(max_length=255)
 	class Meta:
 		db_table = "files"
 
 class People(models.Model):
 	#id = models.IntegerField(primary_key=True)
-	name = models.TextField()
-	mail = models.TextField()
+	name = models.CharField(max_length=255)
+	email = models.CharField(max_length=255)
 	class Meta:
 		db_table = "people"
 
@@ -36,12 +36,13 @@ class Scmlog(models.Model):
 	class Meta:
 		db_table = "scmlog"
 
-class File_types(models.Model):
-	#id = models.IntegerField(primary_key=True)
-	file = models.ForeignKey(Files)
-	#type_id = models.MediumText
-	class Meta:
-		db_table = "file_types"
+#####Comentado porque no existe esta tabla en la base de datos####
+#class File_types(models.Model):
+#	#id = models.IntegerField(primary_key=True)
+#	file = models.ForeignKey(Files)
+#	#type_id = models.MediumText
+#	class Meta:
+#		db_table = "file_types"
 
 class Branches(models.Model):
 	#id = models.IntegerField(primary_key=True)
@@ -63,32 +64,33 @@ class Commits_lines(models.Model):
 	#id = models.IntegerField(primary_key=True)
 	commit = models.ForeignKey(Scmlog)
 	added = models.IntegerField()
-	removed_name = models.IntegerField()
+	removed = models.IntegerField()
 	class Meta:
 		db_table = "commits_lines"
 
-class Metrics(models.Model):
-	#id = models.IntegerField(primary_key=True)
-	file = models.ForeignKey(Files)
-	commit_id = models.ForeignKey(Commits_lines)
-	lang = models.TextField()
-	sloc = models.IntegerField() 	
-	loc = models.IntegerField()
-	ncomment = models.IntegerField()
-	lcomment = models.IntegerField()
-	lblank = models.IntegerField()	
-	mccabe_min = models.IntegerField()
-	nfunctions = models.IntegerField()
-	mccabe_max = models.IntegerField()
-	mccabe_sum = models.IntegerField()
-	mccabe_mean = models.IntegerField()
-	mccabe_median = models.IntegerField()
-	halstead_length = models.IntegerField()
-	halstead_vol = models.IntegerField()
-	halstead_level = models.FloatField()
-	halstead_md = models.IntegerField()
-	class Meta:
-		db_table = "metrics"
+#####Comentado porque no existe esta tabla en la base de datos####
+#class Metrics(models.Model):
+#	#id = models.IntegerField(primary_key=True)
+#	file = models.ForeignKey(Files)
+#	commit_id = models.ForeignKey(Commits_lines)
+#	lang = models.TextField()
+#	sloc = models.IntegerField() 	
+#	loc = models.IntegerField()
+#	ncomment = models.IntegerField()
+#	lcomment = models.IntegerField()
+#	lblank = models.IntegerField()	
+#	mccabe_min = models.IntegerField()
+#	nfunctions = models.IntegerField()
+#	mccabe_max = models.IntegerField()
+#	mccabe_sum = models.IntegerField()
+#	mccabe_mean = models.IntegerField()
+#	mccabe_median = models.IntegerField()
+#	halstead_length = models.IntegerField()
+#	halstead_vol = models.IntegerField()
+#	halstead_level = models.FloatField()
+#	halstead_md = models.IntegerField()
+#	class Meta:
+#		db_table = "metrics"
 
 class File_copies(models.Model):
 	#id = models.IntegerField(primary_key=True)
@@ -101,13 +103,14 @@ class File_copies(models.Model):
 	class Meta:
 		db_table = "file_copies"
 
-class Files_links(models.Model):
+class File_links(models.Model):
 	#id = models.IntegerField(primary_key=True)
-	file = models.ForeignKey(Files, related_name='files_links_id')
-	parent = models.ForeignKey(Files, related_name='files_links_parent')
+	file = models.ForeignKey(Files, related_name='file_links_id')
+	parent = models.ForeignKey(Files, related_name='file_links_parent')
 	commit = models.ForeignKey(Scmlog)
+	file_path = models.CharField(max_length=4096)
 	class Meta:
-		db_table = "files_links"
+		db_table = "file_links"
 
 class Tags(models.Model):
 	#id = models.IntegerField(primary_key=True)
@@ -123,5 +126,7 @@ class Tag_revisions(models.Model):
 	class Meta:
 		db_table = "tag_revisions"
 
-#TODO: adaptar estas tablas a las de VizGrimoire https://github.com/MetricsGrimoire/CVSAnalY/wiki/Database-Schema
-#util: field options and field types: https://docs.djangoproject.com/en/dev/ref/models/fields/#field-options
+#TODO: hay tablas en la BBDD que no tienen modelo aqui. Deberian?
+
+#util: adaptar estas tablas a las de VizGrimoire https://github.com/MetricsGrimoire/CVSAnalY/wiki/Database-Schema
+
