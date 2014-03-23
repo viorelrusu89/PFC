@@ -27,7 +27,7 @@ class Scmlog(models.Model):
 	#id = models.IntegerField(primary_key=True)
 	repository = models.ForeignKey(Repositories)
 	author = models.ForeignKey(People, related_name='scmlog_author')
-	commiter = models.ForeignKey(People, related_name='scmlog_commiter');
+	committer = models.ForeignKey(People, related_name='scmlog_committer');
 	rev = models.TextField()
 	#rev = models.MediumText
 	date = models.DateTimeField()
