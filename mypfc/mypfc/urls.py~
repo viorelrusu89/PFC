@@ -9,7 +9,8 @@ urlpatterns = patterns('',
 	url(r'^$', 'finalapp.views.home', name='home'),
 
 	url(r'^users', 'finalapp.views.users', name='users'),
-	url(r'^ncommits/(.*)', 'finalapp.views.ncommits', name='ncommits'),
+	url(r'^projects/(.*)', 'finalapp.views.projects', name='projects'),
+	url(r'^commits/(.*)', 'finalapp.views.commits', name='commits'),
     # Examples:
     # url(r'^$', 'mypfc.views.home', name='home'),
     # url(r'^mypfc/', include('mypfc.foo.urls')),

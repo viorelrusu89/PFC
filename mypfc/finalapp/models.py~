@@ -1,6 +1,6 @@
 from django.db import models
 
-##TODO: all these models are to be deleted. Don't need them anymore
+# Create your models here.
 class Repositories(models.Model):
 	#id = models.IntegerField(primary_key=True)
 	uri = models.CharField(max_length=255)

@@ -1,4 +1,7 @@
+# Create your views here.
 from django.http import HttpResponse
+from finalapp.models import *
+from django.core.exceptions import ObjectDoesNotExist
 from grimoire-api/scm.py import SCM
 
 def home(request):
@@ -17,4 +20,5 @@ def projects(request, project):
 def ncommits(request):
     data = SCM (database = 'mysql://jgb:XXX@localhost/vizgrimoire_cvsanaly',
             var = "ncommits", dates = (None, None))
+
     return HttpResponse(data.total())
