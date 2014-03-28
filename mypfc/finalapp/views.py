@@ -1,5 +1,6 @@
 from django.http import HttpResponse
-from grimoire-api/scm.py import SCM
+from scm_query import buildSession
+from datetime import datetime
 
 def home(request):
 
@@ -15,6 +16,14 @@ def projects(request, project):
 	return HttpResponse(html + " and project name is " + project)
 
 def ncommits(request):
-    data = SCM (database = 'mysql://jgb:XXX@localhost/vizgrimoire_cvsanaly',
-            var = "ncommits", dates = (None, None))
-    return HttpResponse(data.total())
+
+    session = buildSession(
+    database='mysql://root:toor@localhost/vizgrimoire',
+    echo=False)
+
+    # Number of commits
+    res = session.query().select_nscmlog(["commits",]) \
+        .filter_period(start=datetime(2012,9,1),
+                       end=datetime(2014,1,1))
+
+    return HttpResponse(res.scalar())
