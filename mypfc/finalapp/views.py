@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from scm_query import buildSession
 from datetime import datetime
+import json
 
 def home(request):
 
@@ -25,5 +26,5 @@ def ncommits(request):
     res = session.query().select_nscmlog(["commits",]) \
         .filter_period(start=datetime(2012,9,1),
                        end=datetime(2014,1,1))
-
-    return HttpResponse(res.scalar())
+    html = json.dumps({'ncommits': res.scalar()})
+    return HttpResponse(html)
