@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+</head>
+<script type="text/javascript" src="static/js/app.js"></script>
+<script type="text/javascript" src="static/js/controllers.js"></script>
+<script type="text/javascript" src="static/js/services.js"></script>
+
+<body ng-app="NCommitsApp" ng-controller="ncommitsController">
+    <h1>Test page... for the moment</h1>
+    {% block content %}
+{% verbatim %}
+
+{{ ncommits }}
+
+{% endverbatim %}
+
+    {% endblock %}
+
+    {% block footer %}
+    <hr>
+    <p>Thanks for visiting my site.</p>
+    {% endblock %}
+
+</body>
+</html>
