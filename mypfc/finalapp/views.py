@@ -10,17 +10,16 @@ def home(request):
 	return HttpResponse(html)
 
 def users(request):
-	html = ""
+	html = "This should be home view.. I think this is not the way to do it in a SPA"
 	return HttpResponse(html)
 
-def projects(request, project):
-	html = "<html><body>projects view goes here</body></html>"
-	return HttpResponse(html + " and project name is " + project)
+def ncommits(request):
 
-def ncommitsjson(request):
+    db_local='mysql://root:toor@localhost/vizgrimoire'
+    db_remote='mysql://sql435278:tD2!rE6*@sql4.freemysqlhosting.net:3306/sql435278'
 
     session = buildSession(
-    database='mysql://root:toor@localhost/vizgrimoire',
+    database=db_remote,
     echo=False)
 
     # Number of commits
@@ -30,8 +29,3 @@ def ncommitsjson(request):
     ncommits = json.dumps({'ncommits': res.scalar()})
 
     return HttpResponse(ncommits)
-
-def ncommits(request):
-
-    return render(request, 'base.html')
-    

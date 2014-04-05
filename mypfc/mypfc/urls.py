@@ -7,9 +7,6 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
 	url(r'^$', 'finalapp.views.home', name='home'),
-
-	url(r'^users', 'finalapp.views.users', name='users'),
-    url(r'^ncommitsjson', 'finalapp.views.ncommitsjson', name='ncommitsjson'),
 	url(r'^ncommits', 'finalapp.views.ncommits', name='ncommits'),
     # Examples:
     # url(r'^$', 'mypfc.views.home', name='home'),

@@ -356,12 +356,11 @@ class SCMQuery (Query):
         self.end = None
         Query.__init__(self, entities, session)
 
-
 if __name__ == "__main__":
 
 
     session = buildSession(
-        database='mysql://root:toor@localhost/vizgrimoire',
+        database='mysql://root:toor@localhost/grimoire',
         echo=False)
 
     # Number of commits

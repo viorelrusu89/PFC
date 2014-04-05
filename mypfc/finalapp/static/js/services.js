@@ -5,7 +5,7 @@ angular.module('NCommitsApp.services', []).
 
 		ergastAPI.getDrivers = function() {
 			return $http({
-				url: 'http://localhost:1234/ncommitsjson'
+				url: 'http://localhost:1234/ncommits'
 			});
 		}
 
