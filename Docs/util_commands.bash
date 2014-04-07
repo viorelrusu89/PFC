@@ -11,6 +11,8 @@ git push origin master
 
 git push -u origin branch1 -- para subir un branch al servidor
 
+git pull origin master -- trae los cambios nuevos del servidor a local y los mezcla
+
 git add -A stages All;
 git add . stages new and modified, without deleted;
 git add -u stages modified and deleted, without new.
@@ -36,5 +38,3 @@ http://localhost/phpmyadmin/index.php
 [18:18:38] jgbarah: https://github.com/jgbarah/grimoire-api
 [18:37:41] jgbarah: http://activity.openstack.org/dash/browser/
 [18:48:08] jgbarah: http://docs.vizgrimoireapi.apiary.io/
-
-[[[1,10,100],[2,20,80],[3,50,60],[4,70,80]],{labels: [ "x", "A", "B" ]}]

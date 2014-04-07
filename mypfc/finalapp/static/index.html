@@ -3,16 +3,24 @@
 <head>
     <title></title>
 
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
 </head>
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/controllers.js"></script>
 <script type="text/javascript" src="js/services.js"></script>
+<script type="text/javascript" src="js/dygraph-combined.js"></script>
 
-<body ng-app="NCommitsApp" ng-controller="ncommitsController">
+<body ng-app="NCommitsApp">
     <h1>Test page... for the moment</h1>
 
-{{ ncommits }}
+<div id="ncommits" ng-controller="ncommitsController">
+	{{ ncommits }}
+</div>
+
+<div id="timeseriesGraph" ng-controller="timeseriesController">
+	{{ timeseries }}
+	<div id="demodiv"></div>
+</div>
 
     <hr>
     <p>Thanks for visiting my site.</p>

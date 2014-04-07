@@ -8,6 +8,7 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('',
 	url(r'^$', 'finalapp.views.home', name='home'),
 	url(r'^ncommits', 'finalapp.views.ncommits', name='ncommits'),
+	url(r'^timeseries', 'finalapp.views.timeseries', name='timeseries'),
     # Examples:
     # url(r'^$', 'mypfc.views.home', name='home'),
     # url(r'^mypfc/', include('mypfc.foo.urls')),

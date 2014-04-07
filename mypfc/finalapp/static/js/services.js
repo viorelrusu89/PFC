@@ -1,13 +1,19 @@
 angular.module('NCommitsApp.services', []).
-	factory('ergastAPIservice', function($http) {
+	factory('djangoAPIservice', function($http) {
 
-		var ergastAPI = {};
+		var djangoAPI = {};
 
-		ergastAPI.getDrivers = function() {
+		djangoAPI.getNCommits = function() {
 			return $http({
 				url: 'http://localhost:1234/ncommits'
 			});
 		}
 
-		return ergastAPI;
+		djangoAPI.getTimeSeries = function() {
+			return $http({
+				url: 'http://localhost:1234/timeseries'
+			});
+		}
+
+		return djangoAPI;
 	});

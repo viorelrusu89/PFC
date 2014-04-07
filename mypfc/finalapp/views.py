@@ -4,6 +4,10 @@ from scm_query import buildSession
 from datetime import datetime
 import json
 
+db_local='mysql://root:toor@localhost/vizgrimoire'
+db_remote='mysql://sql435278:tD2!rE6*@sql4.freemysqlhosting.net:3306/sql435278'
+
+
 def home(request):
 
 	html = "<html><body>home</body></html>"
@@ -14,9 +18,6 @@ def users(request):
 	return HttpResponse(html)
 
 def ncommits(request):
-
-    db_local='mysql://root:toor@localhost/vizgrimoire'
-    db_remote='mysql://sql435278:tD2!rE6*@sql4.freemysqlhosting.net:3306/sql435278'
 
     session = buildSession(
     database=db_remote,
@@ -29,3 +30,16 @@ def ncommits(request):
     ncommits = json.dumps({'ncommits': res.scalar()})
 
     return HttpResponse(ncommits)
+
+def timeseries(request):
+
+    session = buildSession(
+    database=db_remote,
+    echo=False)
+
+    res = session.query().select_nscmlog(["commits",]) \
+    .group_by_period() \
+    .filter_period(end=datetime(2014,1,1))
+    ts = res.timeseries ()
+
+    return HttpResponse(ts.json())

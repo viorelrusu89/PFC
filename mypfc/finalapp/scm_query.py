@@ -360,7 +360,7 @@ if __name__ == "__main__":
 
 
     session = buildSession(
-        database='mysql://root:toor@localhost/grimoire',
+        database='mysql://root:toor@localhost/vizgrimoire',
         echo=False)
 
     # Number of commits
@@ -384,6 +384,11 @@ if __name__ == "__main__":
     ts = res.timeseries ()
     print (ts)
 
+    print ts.data
+    print "------------------"
+    print ts.json()
+
+    print "------------------"
     # List of commits
     res = session.query() \
         .select_listcommits() \
