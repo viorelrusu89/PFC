@@ -8,8 +8,6 @@ pyOpenSSL==0.13
 pycrypto==2.6
 pycups==1.9.63
 pycurl==7.19.0
-pygobject==3.10.0
-pygpgme==0.3
 pyinotify==0.9.3
 pyserial==2.6
 pysmbc==1.0.13
