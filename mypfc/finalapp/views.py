@@ -10,7 +10,7 @@ db_remote='mysql://sql435278:tD2!rE6*@sql4.freemysqlhosting.net:3306/sql435278'
 
 def home(request):
 
-	html = "<html><body>home</body></html>"
+	html = "<html><body><a href='/static/index.html'>SPA here</a></body></html>"
 	return HttpResponse(html)
 
 def users(request):
