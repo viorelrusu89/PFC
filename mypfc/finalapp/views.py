@@ -34,7 +34,7 @@ def ncommits(request):
 def timeseries(request):
 
     session = buildSession(
-    database=db_remote,
+    database=db_local,
     echo=False)
 
     res = session.query().select_nscmlog(["commits",]) \
