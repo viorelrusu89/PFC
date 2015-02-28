@@ -5,7 +5,7 @@ from datetime import datetime
 import json
 
 db_local='mysql://root:toor@localhost/vizgrimoire'
-db_remote='mysql://sql435278:tD2!rE6*@sql4.freemysqlhosting.net:3306/sql435278'
+db_remote='mysql://viorel:blue1love@db4free.net/vizgrimoire'
 
 
 def home(request):
@@ -20,7 +20,7 @@ def users(request):
 def ncommits(request):
 
     session = buildSession(
-    database=db_remote,
+    database=db_local,
     echo=False)
 
     # Number of commits

@@ -3,6 +3,8 @@ sudo service mysql restart
 root
 toor
 
+mysql -u viorel -h db4free.net -pblue1love
+
 mysql --user=root --password=toor prodb <vizgrimoire_vizgrimoirer_cvsanaly.dump >output.tab
 
 mysql --user=.... -> use database1 -> source vizgrimoire.dump #para crear las tablas en database1
@@ -25,7 +27,7 @@ merge it back into your master branch
 $ git checkout master
 $ git merge hotfix
 
-$ git branch -d hotfix
+$ git branch -d hotfi
 Deleted branch hotfix (was 3a0874c).
 
 cd dir-practica/myproject

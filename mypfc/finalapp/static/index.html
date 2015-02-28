@@ -21,7 +21,6 @@
 
 <body ng-app="NCommitsApp">
 
-
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -65,7 +64,9 @@
     </div>
 
 <div id="ncommits" ng-controller="ncommitsController">
-    {{ ncommits }}
+    Total number of commits: {{ ncommits }}
+
+
 </div>
 
 <div id="timeseriesGraph" ng-controller="timeseriesController">

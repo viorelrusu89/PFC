@@ -13,9 +13,6 @@ djangoAPIservice.getNCommits().success(function (response) {
 /* timeseriesController */
 controller('timeseriesController', function($scope, djangoAPIservice) {
 
-	$scope.timeseries = 777;
-
-
 djangoAPIservice.getTimeSeries().success(function (response){
 		$scope.timeseries = response.values;
 
@@ -25,7 +22,7 @@ g = new Dygraph(
     function() {
 
       //Trying to fill out data from server
-/*      r = "date,ncommits\n";
+/*    r = "date,ncommits\n";
       for (var i=0; i<$scope.timeseries.values.length; i++) {
                       r += $scope.timeseries["values"][i][0] + "," + $scope.timeseries["values"][i][1] + "\n";
             }
@@ -35,15 +32,15 @@ g = new Dygraph(
  
       //hand-written "object". TODO: generate it from server
       r =  "date,ncommits\n" + 
-           "2012-08-01, 16\n" +
-           "2012-09-01, 21\n" +
-           "2012-10-01, 9\n" +
-           "2012-11-01, 2\n" +
-           "2012-12-01, 33\n" +
-           "2013-01-01, 6\n" +
-           "2013-02-01, 6\n" +
-           "2013-03-01, 75\n" +
-           "2013-04-01, 196\n";
+           "2012-08-01,16\n" +
+           "2012-09-01,21\n" +
+           "2012-10-01,9\n" +
+           "2012-11-01,10\n" +
+           "2012-12-01,33\n" +
+           "2013-01-01,6\n" +
+           "2013-02-01,6\n" +
+           "2013-03-01,75\n" +
+           "2013-04-01,75\n";
       return r;
 
       /*
