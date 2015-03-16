@@ -1,22 +1,23 @@
-angular.module('NCommitsApp.controllers', []).
+(function(){
+var app = angular.module('ncommitsapp', []);
 
 /* Ncommits controller */
-controller('ncommitsController', function($scope, djangoAPIservice) {
+app.controller('ncommitsController', function($scope, djangoAPIservice) {
 	$scope.ncommits = 0;
 
-djangoAPIservice.getNCommits().success(function (response) {
+djangoAPIservice.getNCommits().success(function (response){
         //Dig into the response to get the relevant data
         $scope.ncommits = response.ncommits;
     });
-}).
 
 /* timeseriesController */
-controller('timeseriesController', function($scope, djangoAPIservice) {
+app.controller('timeseriesController', function($scope, djangoAPIservice){
 
 djangoAPIservice.getTimeSeries().success(function (response){
 		$scope.timeseries = response.values;
 
 });
+
 g = new Dygraph(
     document.getElementById("demodiv"),
     function() {
@@ -66,7 +67,6 @@ g = new Dygraph(
         highlightCircleSize: 6
       },
     }
-);
-
-
+)
 });
+})();
