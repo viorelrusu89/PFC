@@ -1,7 +1,6 @@
 (function(){
-var app = angular.module('ncommitsapp', []);
+var app = angular.module('dashboard', []);
 
-/* Ncommits controller */
 app.controller('ncommitsController', function($scope, djangoAPIservice) {
 	$scope.ncommits = 0;
 
