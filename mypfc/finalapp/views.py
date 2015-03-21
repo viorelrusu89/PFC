@@ -3,14 +3,15 @@ from django.shortcuts import render
 from scm_query import buildSession
 from datetime import datetime
 import json
-from django.shortcuts import redirect
 
 db_local='mysql://root:toor@localhost/vizgrimoire'
 db_remote='mysql://viorel:blue1love@db4free.net/vizgrimoire'
 
+
 def home(request):
 
-    return redirect ('/static/index.html')
+	html = "<html><body><a href='/static/index.html'>SPA here</a></body></html>"
+	return HttpResponse(html)
 
 def users(request):
 	html = "This should be home view.. I think this is not the way to do it in a SPA"
