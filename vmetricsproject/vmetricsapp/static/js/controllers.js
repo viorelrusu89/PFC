@@ -2,7 +2,7 @@
 var app = angular.module('dashboard', []);
 
 app.controller('ncommitsController', function($scope, djangoAPIservice) {
-	$scope.ncommits = 0;
+  $scope.ncommits = 0;
 
 djangoAPIservice.getNCommits().success(function (response){
         //Dig into the response to get the relevant data
@@ -13,7 +13,7 @@ djangoAPIservice.getNCommits().success(function (response){
 app.controller('timeseriesController', function($scope, djangoAPIservice){
 
 djangoAPIservice.getTimeSeries().success(function (response){
-		$scope.timeseries = response.values;
+    $scope.timeseries = response.values;
 
 });
 
