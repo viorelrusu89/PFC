@@ -1,16 +1,17 @@
-angular.module('NCommitsApp.services', []).
+angular.module('dashboardApp.services', []).
 	factory('djangoAPIservice', function($http) {
 
 		var djangoAPI = {};
+
 		djangoAPI.getNCommits = function() {
 			return $http({
-				url: 'http://localhost:1234/ncommits'
+				url: '/ncommits'
 			});
 		}
 
 		djangoAPI.getTimeSeries = function() {
 			return $http({
-				url: 'http://localhost:1234/timeseries'
+				url: '/timeseries'
 			});
 		}
 

@@ -1,4 +1,4 @@
-angular.module('NCommitsApp', [
-	'NCommitsApp.controllers',
-	'NCommitsApp.services'
+angular.module('dashboardApp', [
+	'dashboardApp.controllers',
+	'dashboardApp.services'
 	]);
