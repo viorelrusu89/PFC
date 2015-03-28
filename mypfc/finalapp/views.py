@@ -3,13 +3,14 @@ from django.shortcuts import render
 from scm_query import buildSession
 from datetime import datetime
 import json
+import pdb  #Debugging purposes
 
 db_local='mysql://root:toor@localhost/vizgrimoire'
 db_remote='mysql://viorel:blue1love@db4free.net/vizgrimoire'
 
 
 def home(request):
-
+    pdb.set_trace()
 	html = "<html><body><a href='/static/index.html'>SPA here</a></body></html>"
 	return HttpResponse(html)
 

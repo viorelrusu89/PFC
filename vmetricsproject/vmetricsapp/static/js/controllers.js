@@ -1,37 +1,39 @@
 angular.module('dashboardApp.controllers', []).
 
 /* Ncommits controller */
-controller('ncommitsController', function($scope, djangoAPIservice) {
+controller('ncommitsController', function($scope, vserverAPIservice) {
 	$scope.ncommits = 0;
 
-djangoAPIservice.getNCommits().success(function (response) {
+vserverAPIservice.getNCommits().success(function (response) {
         //Dig into the response to get the relevant data
         $scope.ncommits = response.ncommits;
     });
 }).
 
 /* timeseriesController */
-controller('timeseriesController', function($scope, djangoAPIservice) {
+controller('timeseriesController', function ($scope, vserverAPIservice) {
 
-djangoAPIservice.getTimeSeries().success(function (response){
+  vserverAPIservice.getTimeSeries().success(function (response){
 		$scope.timeseries = response.values;
+    timeseries = response.values;
 
-});
-g = new Dygraph(
+    g = new Dygraph(
     document.getElementById("demodiv"),
     function() {
 
       //Trying to fill out data from server
-/*    r = "date,ncommits\n";
-      for (var i=0; i<$scope.timeseries.values.length; i++) {
-                      r += $scope.timeseries["values"][i][0] + "," + $scope.timeseries["values"][i][1] + "\n";
-            }
+    r = "date,ncommits\n";
+    for (var i=0; i<timeseries.length; i++) {
+                    r += timeseries[i][0] + "," + timeseries[i][1] + "\n";
+          }
+    r = r.replace(/T00:00:00/g, "");
+    return r;
 
-      r = r.replace(/T00:00:00/g, " ");
-      return r;*/
- 
+});
+
+
       //hand-written "object". TODO: generate it from server
-      r =  "date,ncommits\n" + 
+      /*r =  "date,ncommits\n" + 
            "2012-08-01,16\n" +
            "2012-09-01,21\n" +
            "2012-10-01,9\n" +
@@ -41,7 +43,7 @@ g = new Dygraph(
            "2013-02-01,6\n" +
            "2013-03-01,75\n" +
            "2013-04-01,75\n";
-      return r;
+      return r;*/
 
       /*
       // Dygraphs working model code

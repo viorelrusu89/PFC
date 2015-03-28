@@ -1,19 +1,19 @@
 angular.module('dashboardApp.services', []).
-	factory('djangoAPIservice', function($http) {
+	factory('vserverAPIservice', function($http) {
 
-		var djangoAPI = {};
+		var vserverAPI = {};
 
-		djangoAPI.getNCommits = function() {
+		vserverAPI.getNCommits = function() {
 			return $http({
 				url: '/ncommits'
 			});
 		}
 
-		djangoAPI.getTimeSeries = function() {
+		vserverAPI.getTimeSeries = function() {
 			return $http({
 				url: '/timeseries'
 			});
 		}
 
-		return djangoAPI;
+		return vserverAPI;
 	});
