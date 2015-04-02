@@ -8,6 +8,8 @@ from django.shortcuts import redirect
 db_local='mysql://root:toor@localhost/vizgrimoire'
 db_remote='mysql://viorel:blue1love@db4free.net/vizgrimoire'
 
+session = buildSession(database=db_local, echo=False)
+
 def home(request):
 
     return redirect ('/static/index.html')
@@ -18,27 +20,18 @@ def users(request):
 
 def ncommits(request):
 
-    session = buildSession(
-    database=db_local,
-    echo=False)
-
     # Number of commits
     res = session.query().select_nscmlog(["commits",]) \
         .filter_period(start=datetime(2012,9,1),
                        end=datetime(2014,1,1))
     ncommits = json.dumps({'ncommits': res.scalar()})
-
+    print ncommits
     return HttpResponse(ncommits)
 
 def timeseries(request):
-
-    session = buildSession(
-    database=db_local,
-    echo=False)
 
     res = session.query().select_nscmlog(["commits",]) \
     .group_by_period() \
     .filter_period(end=datetime(2014,1,1))
     ts = res.timeseries ()
-
     return HttpResponse(ts.json())

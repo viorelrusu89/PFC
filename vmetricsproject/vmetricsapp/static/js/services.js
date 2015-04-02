@@ -1,3 +1,4 @@
+//server API
 angular.module('dashboardApp.services', []).
 	factory('vserverAPIservice', function($http) {
 
