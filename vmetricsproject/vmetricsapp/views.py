@@ -21,11 +21,8 @@ def users(request):
 def ncommits(request):
 
     # Number of commits
-    res = session.query().select_nscmlog(["commits",]) \
-        .filter_period(start=datetime(2012,9,1),
-                       end=datetime(2014,1,1))
+    res = session.query().select_nscmlog(["commits",])
     ncommits = json.dumps({'ncommits': res.scalar()})
-    print ncommits
     return HttpResponse(ncommits)
 
 def timeseries(request):
