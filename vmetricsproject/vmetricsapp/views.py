@@ -5,7 +5,7 @@ from datetime import datetime
 import json
 from django.shortcuts import redirect
 
-db_local='mysql://root:toor@localhost/vizgrimoire'
+db_local='mysql://root:toor@localhost/prodb'
 db_remote='mysql://viorel:blue1love@db4free.net/vizgrimoire'
 
 session = buildSession(database=db_local, echo=False)
